@@ -3,6 +3,7 @@ import style from './BodyReader.module.css';
 import Webcam from "react-webcam"
 import * as posenet from "@tensorflow-models/posenet"
 import { drawKeypoints, drawSkeleton } from './utilities';
+import axios from 'axios';
 
 function Camera() {
   const webcamRef = useRef(null);
@@ -43,9 +44,17 @@ function Camera() {
           
           if (distance > 10) {
             i++;
-            if (i>=30) {
+            if (i>=2) {
               i=0;
-              console.log("YOU'RE GOATED");
+              const callCurls = () => {
+                axios.post("http://127.0.0.1:8080/get-curls")
+                    .then(response => {
+                    })
+                    .catch(error => {
+                        console.error('Error sending data:', error);
+                    });
+              };
+              callCurls();
             }
           }
         }
