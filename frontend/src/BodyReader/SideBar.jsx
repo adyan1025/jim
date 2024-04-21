@@ -7,12 +7,12 @@ function SideBar() {
   const [response, setResponse] = useState(null);
 
   const handleSaveResponse = (newResponse) => {
-    setResponse(newResponse); // Update state with received response
+    setResponse(newResponse);
   };
 
   return (
     <div className={style['side-bar']}>
-      <Feedback message={response} /> {/* Conditionally render Feedback */}
+      <Feedback message={response} />
       <div className={style['side-prompt']}>
         <PromptBar onSave={handleSaveResponse} />
       </div>
