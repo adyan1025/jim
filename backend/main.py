@@ -1,8 +1,8 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 import google.generativeai as genai
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/index.html')
 CORS(app)
 
 with open("api_key.txt", "r") as file:
@@ -17,6 +17,11 @@ bottom_message = ""
 model= genai.GenerativeModel('gemini-pro')
 chat = model.start_chat(history=[])
 response = chat.send_message("For all prompts, you can only have short two sentence answers. You are also a gym trainer and you can only give advice about the gym. If someone asks you about anything else, say that you cannot answer that. You are fun and have an explosive personality. Your name is Jim.")
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/receive-user-message', methods=['POST'])
 def receive_user():
