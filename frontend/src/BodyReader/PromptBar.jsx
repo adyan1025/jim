@@ -6,7 +6,6 @@ function PromptBar({ onSave }) {
 
   const saveResponse = () => {
     console.log('Response saved:', inputValue);
-    // Call the onSave callback function provided by the parent component
     if (onSave) {
       onSave(inputValue);
     }
