@@ -1,3 +1,23 @@
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #88888860;
+  border-radius: 50px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .BodyReader {
     margin: 2%;
     color: white;
@@ -41,6 +61,7 @@
 }
 
 .feedback {
+  overflow-y: scroll;
     display: flex;
     flex-direction: column;
     border: white solid 0px;
@@ -49,31 +70,34 @@
     gap: 3%;
 }
 
+.message-container {
+  border: 0px red solid;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .message {
-    /* Flexbox for layout (optional) */
     display: flex;
-    flex-direction: row-reverse; /* Reverse for right-aligned messages */
+    position: relative;
+    width: fit-content;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #4567c4;
+    border-color: transparent;
   
-    /* Message bubble shape */
-    position: relative; /* Needed for pseudo-element */
-    width: 200px; /* Adjust width as needed */
-    padding: 15px; /* Adjust padding for content spacing */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #4567c4; /* Light background color */
-  
-    /* Message bubble tail (using pseudo-element) */
+    
     &::before {
       content: "";
       position: absolute;
-      bottom: -10px; /* Adjust tail position */
-      right: 10px;  /* Adjust tail position for right-aligned messages */
+      bottom: -10px;
+      right: 10px;
       width: 0;
       height: 0;
       border-style: solid;
       border-width: 0 10px 10px 0; /* Create triangle shape */
       border-color: transparent #4567c4 transparent transparent; /* Match background color */
     }
-  }
+}
 
 .side-prompt {
     border: red solid 0px;

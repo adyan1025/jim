@@ -7,7 +7,7 @@ function Feedback(props) {
     const [messages, setMessages] = useState(props.message ? [props.message] : []);
     React.useEffect(() => {
         const newMessage = props.message;
-        if (newMessage) { // Check if message is not empty
+        if (newMessage) {
           setMessages((prevMessages) => [...prevMessages, newMessage]);
         }
       }, [props.message]);
