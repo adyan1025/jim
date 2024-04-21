@@ -1,5 +1,5 @@
-import './App.css'
-import BodyReader from './BodyReader/BodyReader'
+import './App.css';
+import BodyReader from './BodyReader/BodyReader';
 
 function App() {
 

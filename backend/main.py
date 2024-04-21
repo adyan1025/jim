@@ -1,15 +1,15 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app, origins='*')
 
-@app.route("/api/users", methods=['GET'])
+@app.route("/gemini-message", methods=['GET'])
 def users():
     return jsonify(
         {
-            "users": [
-                'adyan',
-                'angie',
-                'rudaba',
+            "message": [
+                'This is a message from Gemini!',
             ]
         }
     )
