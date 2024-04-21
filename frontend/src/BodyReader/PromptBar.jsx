@@ -1,34 +1,36 @@
 import React, { useState } from 'react';
 import style from './BodyReader.module.css';
 
-function PromptBar() {
-    const [inputValue, setInputValue] = useState('');
+function PromptBar({ onSave }) {
+  const [inputValue, setInputValue] = useState('');
 
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-        // Save the response when Enter key is pressed
-        saveResponse(inputValue);
-        // Clear the input field
-        setInputValue('');
-        }
-    };
+  const saveResponse = () => {
+    console.log('Response saved:', inputValue);
+    // Call the onSave callback function provided by the parent component
+    if (onSave) {
+      onSave(inputValue);
+    }
+  };
 
-    const saveResponse = (response) => {
-        // Perform any action to save the response here
-        console.log('Response saved:', response);
-    };
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      saveResponse();
+      setInputValue('');
+    }
+  };
 
-    const handleChange = (event) => {
-        setInputValue(event.target.value);
-    };
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <input 
-    type="text" 
-    placeholder="Enter Prompt" 
-    className={style['prompt']} 
-    value={inputValue}
-    onChange={handleChange}
-    onKeyDown={handleKeyDown}>
+      type="text" 
+      placeholder="Enter Prompt" 
+      className={style['prompt']} 
+      value={inputValue}
+      onChange={handleChange}
+      onKeyDown={handleKeyDown}>
     </input>
   );
 }
