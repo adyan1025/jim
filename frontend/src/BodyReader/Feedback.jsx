@@ -8,18 +8,18 @@ function Feedback(props) {
 
     React.useEffect(() => {
         const newMessage = props.message;
-        const fetchAPI = () => {
-            axios.get("http://127.0.0.1:8080/gemini-message")
+        const sendUserMessage = (user) => {
+            axios.post("http://127.0.0.1:8080/receive-user-message", user)
                 .then(response => {
                     setAllMessages(prevMessages => [...prevMessages, response.data.message]);
                 })
                 .catch(error => {
-                    console.error('Error fetching data:', error);
+                    console.error('Error sending data:', error);
                 });
         }
         if (newMessage) {
             setAllMessages(prevMessages => [...prevMessages, newMessage]);
-            fetchAPI();
+            sendUserMessage(newMessage);
         }
     }, [props.message]);
 
