@@ -26,7 +26,7 @@ function PromptBar({ onSave }) {
   return (
     <input 
       type="text" 
-      placeholder="Enter Prompt" 
+      placeholder="Ask Jim..." 
       className={style['prompt']} 
       value={inputValue}
       onChange={handleChange}
